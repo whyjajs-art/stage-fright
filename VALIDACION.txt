@@ -1,0 +1,16 @@
+VERIFICACIÓN DE LA WEB ACTUALIZADA
+
+Gameplay y Tráiler con tamaños máximos para evitar que crezcan excesivamente en monitores grandes.
+Títulos: máximo 40 px. Tarjetas: máximo 440 px de alto, tres simétricas.
+Galería: máximo 720 px de ancho. Video: máximo 740 px de ancho.
+Altura de secciones determinada por su contenido y espaciado, sin alturas gigantes ligadas al ancho de pantalla.
+Fondo de persecución conservado detrás del título; arte lateral centrado y con tamaño limitado.
+Home, footer, HTML de ambas secciones, estilos originales, scripts e imágenes originales conservados.
+Solo se utilizaron imágenes oficiales existentes; no se generó arte.
+
+Comprobaciones: pantallas de 2530, 1366 y 390 px; sin desbordamiento horizontal.
+Tarjetas de igual altura; imágenes cargadas y rutas HTML/CSS verificadas.
+ZIP comprobado mediante lectura de integridad.
+
+Pendiente preexistente: downloads/StageFright.zip (archivo del juego) no venía incluido en el original.
+La web mantiene el aviso original de descarga no configurada. Esto no afecta al ZIP de la web.

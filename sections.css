@@ -1,0 +1,216 @@
+/* Proportional Gameplay and Trailer layout. Only these sections are affected. */
+#previews,#trailer{
+  --unit:min(1vw, 12px);
+  max-width:none;
+  width:100%;
+  margin:0;
+  padding:0;
+  isolation:isolate;
+  text-align:center;
+  overflow:hidden;
+}
+#previews{height:calc(var(--unit) * 70.35);padding-top:calc(var(--unit) * 7.1);}
+#trailer{height:calc(var(--unit) * 61.95);padding-top:calc(var(--unit) * 2.35);}
+#previews .chip,#trailer .chip{
+  padding:calc(var(--unit) * .45) calc(var(--unit) * 1.35);
+  font-size:calc(var(--unit) * .96);
+  line-height:1.25;
+  border-radius:calc(var(--unit) * .9);
+  border-width:1px;
+  background:rgba(0,9,24,.55);
+}
+#previews h1,#trailer h2{
+  font-size:calc(var(--unit) * 3.6);
+  line-height:1.16;
+  margin:calc(var(--unit) * 1.25) 0 calc(var(--unit) * 1.25);
+  letter-spacing:0;
+}
+#previews .accent,#trailer .accent{
+  height:2px;
+  width:calc(var(--unit) * 3.7);
+  margin:0 auto;
+  box-shadow:none;
+}
+#previews .gallery-frame{
+  width:61%;
+  max-width:none;
+  margin:calc(var(--unit) * 7.15) auto 0;
+  padding:0;
+  border:0;
+  background:none;
+  box-shadow:none;
+}
+#previews .gallery-frame-line{display:none;}
+#previews .gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:calc(var(--unit) * 1.4);
+}
+#previews .shot{
+  height:calc(var(--unit) * 41.45);
+  aspect-ratio:auto;
+  border-radius:calc(var(--unit) * .75);
+  border:1px solid rgba(105,182,207,.6);
+  box-shadow:0 calc(var(--unit) * 1.2) calc(var(--unit) * 3) rgba(0,0,0,.3);
+}
+#previews .shot img{object-fit:cover;object-position:50% 50%;}
+#previews .shot:first-child img{object-position:50% 30%;}
+#previews .gameplay-side-art,#trailer .trailer-side-art{
+  display:block;
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  filter:none;
+  opacity:1;
+  border-radius:0;
+  background-repeat:no-repeat;
+}
+#previews .gameplay-side-art{
+  width:30%;height:calc(var(--unit) * 48);
+  background-image:url('assets/gameplay-chase-official.jpg');
+  background-size:calc(var(--unit) * 85) auto;
+  mask-image:linear-gradient(to bottom,transparent,#000 13%,#000 74%,transparent);
+}
+#previews .gameplay-side-left{
+  left:-3%;top:0;
+  background-position:41% calc(var(--unit) * -8);
+  mask-image:linear-gradient(to right,#000 70%,transparent),linear-gradient(to bottom,transparent,#000 13%,#000 74%,transparent);
+  mask-composite:intersect;
+}
+#previews .gameplay-side-right{
+  right:-2%;top:0;
+  background-position:77% calc(var(--unit) * -3);
+  mask-image:linear-gradient(to left,#000 70%,transparent),linear-gradient(to bottom,transparent,#000 8%,#000 74%,transparent);
+  mask-composite:intersect;
+}
+#previews .gameplay-scenery{
+  position:absolute;
+  z-index:-1;
+  left:0;bottom:0;
+  width:100%;height:calc(var(--unit) * 49);
+  margin:0;
+  border-radius:0;
+  background:linear-gradient(90deg,rgba(3,19,38,.12),rgba(3,19,38,.72) 32%,rgba(3,19,38,.72) 68%,rgba(3,19,38,.12)),url('assets/gameplay-cavern-official.jpg') center/cover no-repeat;
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent);
+}
+#trailer::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,#03132600,#03132655 75%,#031326),url('assets/trailer-house-official.jpg') center/cover;
+  opacity:.55;
+  mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 85%,transparent);
+}
+#trailer .trailer-side-art{
+  top:calc(var(--unit) * 7);bottom:auto;
+  width:32%;height:calc(var(--unit) * 48);
+  background-size:auto 100%;
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent);
+}
+#trailer .trailer-side-left{
+  left:-3%;
+  background-image:url('assets/trailer-house-official.jpg');
+  background-position:47% center;
+  mask-image:linear-gradient(to right,#000 62%,transparent),linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent);
+  mask-composite:intersect;
+}
+#trailer .trailer-side-right{
+  right:-3%;
+  background-image:url('assets/trailer-bone-bridge-official.jpg');
+  background-position:63% center;
+  mask-image:linear-gradient(to left,#000 62%,transparent),linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent);
+  mask-composite:intersect;
+}
+#trailer .video-shell{
+  width:55%;max-width:none;
+  margin:calc(var(--unit) * 5.8) auto 0;
+  border-radius:calc(var(--unit) * .85);
+  border:1px solid rgba(105,182,207,.6);
+  box-shadow:0 calc(var(--unit) * 1.8) calc(var(--unit) * 4) rgba(0,0,0,.45);
+}
+#trailer video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;}
+@media(max-width:600px){
+  #previews{height:auto;min-height:calc(var(--unit) * 86);padding:calc(var(--unit) * 9) 0 calc(var(--unit) * 9);}
+  #trailer{height:auto;min-height:calc(var(--unit) * 78);padding:calc(var(--unit) * 4) 0 calc(var(--unit) * 16);}
+  #previews .chip,#trailer .chip{font-size:9px;padding:4px 11px;border-radius:10px;}
+  #previews h1,#trailer h2{font-size:calc(var(--unit) * 5.2);margin:calc(var(--unit) * 2) 0;}
+  #previews .accent,#trailer .accent{width:calc(var(--unit) * 6);}
+  #previews .gallery-frame{width:76%;margin-top:calc(var(--unit) * 8);}
+  #previews .gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(var(--unit) * 1.6);}
+  #previews .shot{height:calc(var(--unit) * 51.7);border-radius:5px;}
+  #previews .gameplay-side-art{top:calc(var(--unit) * 4);}
+  #trailer .video-shell{width:76%;margin-top:calc(var(--unit) * 8);border-radius:6px;}
+  #trailer .trailer-side-art{height:calc(var(--unit) * 62);top:calc(var(--unit) * 13);}
+}
+
+/* The chase environment fills the title area and joins both character crops. */
+#previews::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--unit) * 48);z-index:-1;
+  background:url('assets/gameplay-chase-official.jpg') left top / 180% auto no-repeat;
+  mask-image:linear-gradient(to bottom,transparent,#000 4%,#000 70%,transparent);
+}
+#previews .gameplay-side-left{
+  left:-3%;top:0;width:30%;height:calc(var(--unit) * 48);
+  background-image:url('assets/gameplay-chase-official.jpg');
+  background-size:calc(var(--unit) * 85) auto;background-position:41% calc(var(--unit) * -8);
+  mask-image:linear-gradient(to right,#000 48%,transparent),linear-gradient(to bottom,transparent,#000 13%,#000 74%,transparent);
+  mask-composite:intersect;
+}
+#previews .gameplay-side-right{
+  display:block;right:-2%;top:0;width:30%;height:calc(var(--unit) * 48);
+  background-image:url('assets/gameplay-chase-official.jpg');
+  background-size:calc(var(--unit) * 85) auto;background-position:77% calc(var(--unit) * -3);
+  mask-image:linear-gradient(to left,#000 48%,transparent),linear-gradient(to bottom,transparent,#000 8%,#000 74%,transparent);
+  mask-composite:intersect;
+}
+#previews h1{text-shadow:0 2px 5px #001020,0 0 18px rgba(0,8,20,.85);}
+
+/* Content uses fixed upper limits instead of growing with the monitor width. */
+#previews{height:auto;min-height:0;padding:64px 0 56px;}
+#trailer{height:auto;min-height:0;padding:36px 0 72px;}
+#previews .chip,#trailer .chip{font-size:11px;padding:5px 15px;border-radius:12px;}
+#previews h1,#trailer h2{font-size:clamp(28px,3.2vw,40px);margin:14px 16px 16px;}
+#previews .accent,#trailer .accent{width:40px;}
+#previews .gallery-frame{width:min(72%,720px);margin:48px auto 0;}
+#previews .gallery{gap:16px;}
+#previews .shot{height:clamp(260px,34vw,440px);border-radius:9px;}
+#trailer .video-shell{width:min(72%,740px);margin:40px auto 0;border-radius:10px;}
+#previews .gameplay-side-left{left:calc(50% - min(50vw,600px) - 24px);width:min(30%,360px);}
+#previews .gameplay-side-right{right:calc(50% - min(50vw,600px) - 16px);width:min(30%,360px);}
+#previews::before{
+  background-size:min(180vw,2160px) auto;
+  background-position:center top;
+  mask-image:linear-gradient(to right,transparent,#000 18%,#000 82%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 70%,transparent);
+  mask-composite:intersect;
+}
+#trailer::before{background-size:cover;}
+#trailer .trailer-side-left{left:calc(50% - min(50vw,600px) - 24px);width:min(32%,384px);}
+#trailer .trailer-side-right{right:calc(50% - min(50vw,600px) - 24px);width:min(32%,384px);}
+#trailer .trailer-side-art{top:60px;height:min(48vw,500px);}
+@media(max-width:600px){
+  #previews{padding:48px 0 36px;}
+  #trailer{padding:28px 0 48px;}
+  #previews h1,#trailer h2{font-size:clamp(24px,5.8vw,32px);margin:12px 12px 14px;}
+  #previews .chip,#trailer .chip{font-size:10px;padding:4px 12px;}
+  #previews .gallery-frame{width:84%;margin-top:30px;}
+  #previews .gallery{gap:8px;}
+  #previews .shot{height:clamp(190px,52vw,310px);border-radius:6px;}
+  #trailer .video-shell{width:88%;margin-top:28px;border-radius:7px;}
+  #trailer .trailer-side-art{top:55px;height:62vw;}
+}
+
+/* Feather both outer and inner edges now that artwork has a centered width cap. */
+#previews .gameplay-side-left{
+  mask-image:linear-gradient(to right,transparent,#000 12%,#000 48%,transparent),linear-gradient(to bottom,transparent,#000 13%,#000 74%,transparent);
+}
+#previews .gameplay-side-right{
+  mask-image:linear-gradient(to left,transparent,#000 12%,#000 48%,transparent),linear-gradient(to bottom,transparent,#000 8%,#000 74%,transparent);
+}
+#trailer .trailer-side-left{
+  mask-image:linear-gradient(to right,transparent,#000 12%,#000 62%,transparent),linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent);
+}
+#trailer .trailer-side-right{
+  mask-image:linear-gradient(to left,transparent,#000 12%,#000 62%,transparent),linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent);
+}
+
+@media(max-width:600px){
+  #previews::before{background-position:left top;}
+}

@@ -1,0 +1,656 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;900&family=Inter:wght@400;600;700;800&display=swap');
+
+:root{
+  color-scheme:dark;
+  --cyan:#06daf5;
+  --navy:#031326;
+  --navy-2:#052347;
+  --gold:#ffc900;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#031326;
+  color:#fff;
+  font-family:Inter,Arial,sans-serif;
+}
+
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+.nav{
+  height:72px;
+  position:fixed;
+  z-index:30;
+  inset:0 0 auto 0;
+  background:linear-gradient(180deg,rgba(6,18,40,.55),rgba(6,18,40,.28));
+  backdrop-filter:blur(18px) saturate(135%);
+  -webkit-backdrop-filter:blur(18px) saturate(135%);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav-inner{
+  max-width:1280px;
+  margin:auto;
+  height:100%;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  gap:40px;
+}
+
+.brand img{width:95px;height:62px;object-fit:contain}
+
+.nav nav{
+  display:flex;
+  gap:35px;
+  margin-right:auto;
+}
+
+.nav nav a{
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.04em;
+  transition:color .2s;
+}
+
+.nav a:hover{color:var(--cyan)}
+
+.top-actions{display:flex;gap:13px;align-items:center}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 27px;
+  border-radius:17px;
+  font-size:13px;
+  font-weight:800;
+  white-space:nowrap;
+  transition:transform .2s,box-shadow .2s,filter .2s;
+}
+.button:hover{transform:translateY(-2px);color:inherit}
+
+.steam,.download{
+  background:var(--cyan);
+  color:#001121;
+  box-shadow:0 0 24px rgba(0,230,255,.25);
+}
+
+.top-actions .button{min-height:40px;padding:0 18px;font-size:11px}
+
+.steam-icon{
+  width:16px;
+  height:16px;
+  object-fit:contain;
+  margin-right:8px;
+  flex:none;
+}
+
+.outline{
+  border:1.5px solid rgba(255,255,255,.84);
+  background:rgba(3,12,28,.34);
+}
+.outline:hover{box-shadow:0 0 18px rgba(12,219,245,.26)}
+
+.hero{
+  height:100svh;
+  min-height:620px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  transform:translateZ(0) scale(1.01);
+  image-rendering:auto;
+}
+
+.hero-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    radial-gradient(circle at 50% 62%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(2,18,40,.22) 62%, rgba(1,15,33,.72) 100%),
+    linear-gradient(180deg,rgba(0,7,15,.18),transparent 22%,transparent 66%,rgba(1,15,33,.88) 100%);
+}
+
+.hero-main{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:85px 20px 120px;
+  gap:24px;
+}
+
+.hero-logo{
+  width:clamp(310px,37vw,560px);
+  max-height:50vh;
+  object-fit:contain;
+  filter:drop-shadow(0 10px 18px rgba(0,10,25,.6));
+  animation:heroLogoAtmosphere 6.2s ease-in-out infinite;
+  will-change:transform,filter;
+}
+
+/* A restrained cinematic shimmer on the existing Stage Fright wordmark. */
+@keyframes heroLogoAtmosphere{
+  0%,100%{
+    transform:translateY(0) scale(1);
+    filter:drop-shadow(0 10px 18px rgba(0,10,25,.6)) drop-shadow(0 0 2px rgba(62,226,255,.08));
+  }
+  48%{
+    transform:translateY(-6px) scale(1.006);
+    filter:drop-shadow(0 10px 18px rgba(0,10,25,.55)) drop-shadow(0 0 11px rgba(62,226,255,.24)) drop-shadow(0 0 8px rgba(171,78,255,.12));
+  }
+  62%{
+    transform:translateY(-5px) scale(1.004);
+    filter:drop-shadow(0 10px 18px rgba(0,10,25,.56)) drop-shadow(0 0 6px rgba(62,226,255,.15));
+  }
+}
+
+.hero-actions{display:flex;gap:18px;align-items:center}
+.hero-actions .download{min-width:190px}
+
+.down{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  z-index:2;
+  transform:translateX(-50%);
+  padding:14px;
+}
+
+.down span{
+  display:block;
+  width:8px;
+  height:8px;
+  border-bottom:1.5px solid var(--cyan);
+  border-right:1.5px solid var(--cyan);
+  transform:rotate(45deg);
+  animation:bob 3.2s ease-in-out infinite;
+}
+
+@keyframes bob{
+  0%,100%{transform:translateY(0) rotate(45deg);opacity:.8}
+  50%{transform:translateY(3px) rotate(45deg);opacity:1}
+}
+
+.continuation{
+  position:relative;
+  overflow:hidden;
+  background: #031326 url('assets/blue-mist.jpg') center top / cover no-repeat;
+}
+
+.previews,.trailer{
+  position:relative;
+  max-width:1260px;
+  margin:0 auto;
+  text-align:center;
+  padding:75px 35px 35px;
+  scroll-margin-top:90px;
+}
+
+.chip{
+  display:inline-block;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  padding:6px 19px;
+  border-radius:99px;
+  font-weight:800;
+  font-size:12px;
+}
+
+.previews h1,.trailer h2{
+  font-family:'Roboto Condensed','Arial Narrow',Impact,sans-serif;
+  font-stretch:condensed;
+  font-weight:900;
+  font-size:clamp(35px,5.3vw,61px);
+  letter-spacing:.015em;
+  margin:12px 0 10px;
+  text-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+
+.accent{height:3px;width:55px;background:var(--gold);margin:0 auto 26px}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+
+.shot{
+  border:1px solid rgba(112,219,253,.35);
+  background:rgba(4,24,48,.22);
+  border-radius:12px;
+  padding:0;
+  cursor:zoom-in;
+  overflow:hidden;
+  aspect-ratio:1.48;
+  box-shadow:0 10px 28px rgba(0,0,0,.15);
+}
+
+.shot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .35s;
+}
+
+.shot:hover img{transform:scale(1.05)}
+.shot:focus-visible{outline:3px solid var(--cyan)}
+
+.trailer{padding-top:58px;padding-bottom:75px}
+.video-shell{
+  width:min(100%,910px);
+  margin:auto;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 16px 45px rgba(0,0,0,.28);
+  border:1px solid rgba(6,190,219,.8);
+  background:#000;
+}
+.trailer video{
+  width:100%;
+  display:block;
+  aspect-ratio:16/9;
+  background:#000;
+  object-fit:contain;
+}
+
+.footer{
+  max-width:1280px;
+  margin:auto;
+  padding:40px 36px 52px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:center;
+  gap:30px;
+  position:relative;
+}
+
+.studio{display:flex;flex-direction:column;gap:15px}
+.studio-name{font-weight:800;font-size:13px;line-height:1.4}
+.studio small{font-size:11px;color:#e0e8f0;line-height:1.8}
+.foot-middle{text-align:center}
+.foot-middle img{height:90px;width:110px;object-fit:contain}
+.social{display:flex;gap:25px;justify-content:center;align-items:center}
+.social a{font-size:26px;font-weight:800;transition:transform .2s;color:#fff}
+.social a:hover{transform:translateY(-3px);color:var(--cyan)}
+.footer-links{display:flex;flex-direction:column;gap:9px;align-items:flex-end;font-size:13px}
+.footer-links a:hover{color:var(--cyan)}
+
+.lightbox:not([hidden]){
+  position:fixed;
+  inset:0;
+  z-index:80;
+  background:rgba(0,3,13,.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:7vw;
+}
+
+.lightbox img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 80px #000}
+.lightbox button{position:absolute;top:18px;right:25px;font-size:45px;cursor:pointer;border:0;background:transparent;color:#fff}
+
+.toast:not([hidden]){
+  position:fixed;
+  z-index:90;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#082c46;
+  padding:16px 23px;
+  border:1px solid var(--cyan);
+  border-radius:13px;
+  max-width:90vw;
+  text-align:center;
+  font-size:14px;
+}
+
+@media(max-width:850px){
+  .nav-inner{gap:14px}
+  .nav nav{gap:15px}
+  .brand img{width:70px}
+  .top-actions .button{padding:0 10px;font-size:10px}
+  .nav nav a{font-size:10px}
+  .hero-logo{width:60vw}
+  .gallery{gap:10px}
+  .footer{padding:30px 20px}
+}
+
+@media(max-width:600px){
+  .nav{height:auto;min-height:72px}
+  .nav-inner{flex-wrap:wrap;justify-content:center;padding:8px 10px;gap:8px}
+  .nav nav{margin-right:0;gap:18px}
+  .top-actions{width:100%;justify-content:center}
+  .top-actions .button{min-height:34px}
+  .hero{min-height:680px}
+  .hero-bg{object-position:54% center}
+  .hero-main{padding-top:150px;gap:20px}
+  .hero-logo{width:85vw}
+  .hero-actions{flex-direction:column;gap:10px}
+  .hero-actions .button{min-width:200px;min-height:48px}
+  .previews,.trailer{padding:55px 18px 28px}
+  .gallery{grid-template-columns:1fr;gap:15px}
+  .shot{aspect-ratio:16/9}
+  .footer{grid-template-columns:1fr;text-align:center;gap:18px}
+  .footer-links{align-items:center}
+  .studio{align-items:center}
+  .trailer{padding-bottom:45px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+
+.studio-name{display:inline-flex;align-items:center;gap:10px}
+.studio-emblem{width:36px;height:36px;object-fit:contain;flex:none}
+
+
+/* Stage Fright continuation — restrained refinements that keep the approved Home intact. */
+.continuation{
+  background-color:#031326;
+  background-image:
+    linear-gradient(180deg,rgba(3,19,38,.08) 0%,rgba(3,19,38,.16) 12%,rgba(3,19,38,.12) 78%,rgba(3,19,38,.42) 100%),
+    url('assets/blue-mist.jpg');
+  background-position:center top,center top;
+  background-size:100% 100%,cover;
+  background-repeat:no-repeat;
+  isolation:isolate;
+}
+.continuation::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-2px;left:0;right:0;height:210px;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(3,19,38,.03),rgba(3,19,38,.58) 68%,transparent);
+}
+.previews,.trailer{padding:88px 35px 50px}
+.previews h1,.trailer h2{margin:15px 0 12px;font-size:clamp(36px,4.7vw,58px);letter-spacing:.005em}
+.accent{width:48px;height:3px;margin:0 auto 34px;box-shadow:0 0 12px rgba(255,201,0,.12)}
+.gallery-frame{
+  position:relative;
+  padding:24px 22px 22px;
+  border:1px solid rgba(76,173,225,.32);
+  border-radius:15px;
+  background:linear-gradient(135deg,rgba(7,35,65,.34),rgba(4,19,40,.22));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 16px 42px rgba(0,0,0,.12);
+}
+.gallery{gap:17px}
+.shot{
+  border-radius:10px;
+  border-color:rgba(88,191,239,.46);
+  background:#06162b;
+  box-shadow:0 8px 22px rgba(0,0,0,.22);
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.shot:hover{border-color:rgba(6,218,245,.9);box-shadow:0 0 0 1px rgba(6,218,245,.12),0 10px 30px rgba(0,0,0,.3);transform:translateY(-2px)}
+.gallery-frame-line{height:1px;position:relative;background:linear-gradient(90deg,transparent,rgba(64,160,222,.48) 15%,rgba(64,160,222,.48) 85%,transparent)}
+.gallery-frame-line-top{margin:0 26px 19px}
+.gallery-frame-line-bottom{margin:19px 26px 0}
+.gallery-frame-line-bottom::after{content:"";position:absolute;left:calc(50% - 20px);top:-1px;width:40px;height:2px;background:var(--gold)}
+.trailer{padding-top:70px;padding-bottom:82px}
+.trailer .accent{margin-bottom:31px}
+.video-shell{
+  width:min(100%,980px);
+  margin:0 auto;
+  border-radius:12px;
+  border:1px solid rgba(6,190,219,.62);
+  box-shadow:0 18px 52px rgba(0,0,0,.32),0 0 0 5px rgba(3,26,51,.22);
+  background:#000;
+}
+.footer{
+  max-width:none;
+  width:100%;
+  padding:31px max(36px,calc((100vw - 1180px)/2)) 35px;
+  border-top:1px solid rgba(75,158,220,.36);
+  background:linear-gradient(180deg,rgba(2,16,33,.36),rgba(2,14,29,.66));
+  grid-template-columns:1fr 1fr 1fr;
+  gap:28px;
+}
+.footer::before,.footer::after{content:"";position:absolute;top:27px;bottom:27px;width:1px;background:linear-gradient(180deg,transparent,rgba(74,160,221,.42),transparent);pointer-events:none}
+.footer::before{left:33.333%}.footer::after{left:66.666%}
+.studio{gap:10px}
+.studio-name{font-size:13px;letter-spacing:.01em}
+.studio-emblem{width:35px;height:35px}
+.studio small{font-size:11px;line-height:1.65;color:rgba(239,246,255,.82)}
+.foot-middle img{height:76px;width:96px}
+.social{gap:22px;margin-top:2px}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:20px;height:22px;font-size:0;transition:transform .2s,color .2s;color:#fff}
+.social a svg{display:block;width:18px;height:18px;fill:currentColor}
+.social a:hover{transform:translateY(-2px);color:var(--cyan)}
+.footer-links{gap:7px;font-size:12px;line-height:1.35}
+.footer-links a{transition:color .2s,transform .2s}
+.footer-links a:hover{color:var(--cyan);transform:translateX(-2px)}
+@media(max-width:850px){
+  .previews,.trailer{padding-left:24px;padding-right:24px}
+  .gallery-frame{padding:18px 16px}
+  .footer{padding:28px 22px 30px}
+}
+@media(max-width:600px){
+  .previews{padding:72px 18px 35px}
+  .trailer{padding:54px 18px 52px}
+  .previews h1,.trailer h2{font-size:clamp(32px,9vw,43px)}
+  .gallery-frame{padding:14px;border-radius:12px}
+  .gallery-frame-line-top{margin:0 8px 14px}
+  .gallery-frame-line-bottom{margin:14px 8px 0}
+  .gallery{gap:13px}
+  .footer{grid-template-columns:1fr;text-align:center;gap:15px;padding:27px 18px 30px}
+  .footer::before,.footer::after{display:none}
+  .studio{align-items:center}
+  .footer-links{align-items:center}
+  .foot-middle img{height:67px}
+}
+
+/* Stage Fright 2.0 — taller, symmetrical gameplay gallery cards */
+.previews .gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:17px;
+}
+.previews .shot{
+  height:clamp(320px,27vw,410px);
+  aspect-ratio:auto;
+  min-width:0;
+  overflow:hidden;
+  border-radius:10px;
+}
+.previews .shot img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+}
+@media(max-width:700px){
+  .previews .gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .previews .shot{height:clamp(210px,48vw,310px)}
+}
+@media(max-width:480px){
+  .previews .gallery{grid-template-columns:1fr;gap:14px}
+  .previews .shot{height:280px}
+}
+
+
+/* Stage Fright 2.0 — approved gameplay + trailer composition */
+.previews,
+.trailer{
+  position:relative;
+  overflow:visible;
+}
+.previews{
+  max-width:1320px;
+  padding:86px 42px 76px;
+}
+.previews > *:not(.gameplay-side-art):not(.gameplay-scenery),
+.trailer > *:not(.trailer-side-art){
+  position:relative;
+  z-index:2;
+}
+.previews .chip,
+.previews h1,
+.previews .accent,
+.trailer .chip,
+.trailer h2,
+.trailer .accent{z-index:3;}
+
+.gameplay-side-art,
+.trailer-side-art{
+  position:absolute;
+  pointer-events:none;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  z-index:1;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.35));
+}
+.gameplay-side-art{
+  top:78px;
+  width:250px;
+  height:390px;
+}
+.gameplay-side-left{
+  left:6px;
+  background-image:url('assets/gameplay-chase-official.jpg');
+  background-size:cover;
+  background-position:22% center;
+}
+.gameplay-side-right{
+  right:8px;
+  background-image:url('assets/gameplay-chase-official.jpg');
+  background-size:cover;
+  background-position:78% center;
+}
+
+.gallery-frame{
+  max-width:860px;
+  margin:0 auto;
+  padding:0;
+  border:0;
+  background:none;
+  box-shadow:none;
+}
+.gallery-frame-line{display:none;}
+.previews .gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:16px;
+}
+.previews .shot{
+  height:clamp(430px,36vw,560px);
+  aspect-ratio:auto;
+  min-width:0;
+  overflow:hidden;
+  border-radius:9px;
+  border:1px solid rgba(60,183,238,.45);
+  box-shadow:0 14px 30px rgba(0,0,0,.25);
+  background:#08131f;
+}
+.previews .shot img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.previews .shot:nth-child(1) img{object-position:center top;}
+.previews .shot:nth-child(2) img{object-position:center center;}
+.previews .shot:nth-child(3) img{object-position:center center;}
+
+.gameplay-scenery{
+  position:relative;
+  z-index:1;
+  width:min(100%,1040px);
+  height:275px;
+  margin:-20px auto 0;
+  background:
+    linear-gradient(180deg,rgba(4,10,22,0) 0%,rgba(4,10,22,.08) 12%,rgba(4,10,22,.16) 100%),
+    url('assets/gameplay-cavern-official.jpg') center/cover no-repeat;
+  border-radius:0 0 32px 32px;
+}
+
+.trailer{
+  max-width:1320px;
+  padding:76px 42px 84px;
+}
+.trailer-side-art{
+  bottom:40px;
+  width:210px;
+  height:315px;
+}
+.trailer-side-left{
+  left:22px;
+  background-image:url('assets/trailer-house-official.jpg');
+  background-position:28% center;
+  border-radius:8px;
+}
+.trailer-side-right{
+  right:22px;
+  background-image:url('assets/trailer-bone-bridge-official.jpg');
+  background-position:72% center;
+  opacity:.88;
+  border-radius:8px;
+}
+.video-shell{
+  width:min(100%,760px);
+  margin:0 auto;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.3);
+}
+
+@media (max-width: 1100px){
+  .gameplay-side-art{width:190px;height:320px;top:96px;}
+  .gameplay-side-left{left:-6px;}
+  .gameplay-side-right{right:-6px;}
+  .trailer-side-art{width:160px;height:250px;bottom:48px;}
+}
+@media (max-width: 900px){
+  .previews{padding:78px 24px 70px;}
+  .trailer{padding:68px 24px 76px;}
+  .gameplay-side-art,
+  .trailer-side-art{display:none;}
+  .gameplay-scenery{height:220px;margin-top:-14px;}
+  .previews .gallery{gap:12px;}
+  .previews .shot{height:clamp(300px,38vw,390px);}
+}
+@media (max-width: 700px){
+  .previews .gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+  .previews .shot{height:clamp(220px,48vw,330px);}
+  .gameplay-scenery{height:170px;}
+  .video-shell{width:min(100%,92vw);}
+}
+@media (max-width: 480px){
+  .previews{padding:58px 18px 54px;}
+  .trailer{padding:54px 18px 60px;}
+  .previews .gallery{grid-template-columns:1fr;gap:14px;}
+  .previews .shot{height:320px;}
+  .gameplay-scenery{height:150px;border-radius:0 0 22px 22px;}
+}
+
+/* Exact user-supplied official screenshots used for the Gameplay and Trailer side art */
+.gameplay-side-art{opacity:.96;}
+.gameplay-side-left{background-image:url('assets/gameplay-chase-official.jpg');background-position:18% center;}
+.gameplay-side-right{background-image:url('assets/gameplay-chase-official.jpg');background-position:80% center;}
+.gameplay-scenery{background-image:linear-gradient(180deg,rgba(4,10,22,0) 0%,rgba(4,10,22,.08) 12%,rgba(4,10,22,.16) 100%),url('assets/gameplay-cavern-official.jpg');}
+.trailer-side-left{background-image:url('assets/trailer-house-official.jpg');background-position:28% center;}
+.trailer-side-right{background-image:url('assets/trailer-bone-bridge-official.jpg');background-position:72% center;}
